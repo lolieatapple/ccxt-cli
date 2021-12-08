@@ -5,7 +5,7 @@ const ccxt = require('ccxt');
 const optimist = require("optimist");
 let argv = optimist
   .usage(
-    "A JavaScript cryptocurrency trading command line script with support for 130+ exchanges based on ccxt library. @wandevs \nUsage: $0 -c ./config.json -e huobi -b"
+    "A JavaScript cryptocurrency trading command line script with support for 130+ exchanges based on ccxt library. \nUsage: $0 -c ./config.json -e huobi -b"
   )
   .alias("c", "config")
   .alias("e", "exchange")
@@ -15,9 +15,9 @@ let argv = optimist
   .default('c', './config.json')
 
   .describe("c", "select config.json file")
-  .describe("e", "select exchange")
+  .describe("e", "-e huobi Select exchange")
   .describe("b", "check balance")
-  .describe("o", "-o [symbol] fetch orders of [symbol]")
+  .describe("o", "-o WAN/BTC Fetch orders of market")
   .describe("create", "create trade order").argv;
 
 async function main() {
@@ -34,7 +34,7 @@ async function main() {
     if (argv.b) {
       if (config[argv.e]) {
         for (let i=0; i<config[argv.e].length; i++) {
-          console.log(argv.e, i, ':')
+          console.log(argv.e, 'apikey', i, ':')
           console.log(await queryBalance(argv.e, config[argv.e][i]));
         }
       } else {
