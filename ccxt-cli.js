@@ -89,10 +89,10 @@ const queryBalance = async (name, apikey) => {
   return { free, used, total }
 }
 
-const fetchOrders = async (name, apikey) => {
+const fetchOrders = async (name, apikey, symbol) => {
   const Exchange = ccxt[name.toLowerCase()];
   const exchange = new Exchange(apikey);
-  let ret = await exchange.fetchOrders();
+  let ret = await exchange.fetchOrders(symbol);
   console.log(ret);
 }
 
