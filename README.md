@@ -72,7 +72,7 @@ It support multi apikey in one exchange.
 ## Query balance:
 ```
 $ node ./ccxt-cli.js -b -e kucoin
-kucoin 0 :
+kucoin apikey 0 :
 { free: { USDT: 0.0352168 }, used: {}, total: { USDT: 0.0352168 } }
 
 Done!
@@ -82,7 +82,7 @@ Done!
 ```
 $ node ./ccxt-cli.js -o WAN/USDT -e binance
 
-binance 0 :
+binance apikey 0 :
 [
   {
     info: {

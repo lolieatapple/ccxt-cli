@@ -45,7 +45,7 @@ async function main() {
     if (argv.o) {
       if (config[argv.e]) {
         for (let i=0; i<config[argv.e].length; i++) {
-          console.log(argv.e, i, ':')
+          console.log(argv.e, 'apikey', i, ':')
           await fetchOrders(argv.e, config[argv.e][i], argv.o);
         }
       } else {
