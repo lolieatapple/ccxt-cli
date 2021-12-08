@@ -41,6 +41,18 @@ async function main() {
         throw new Error(`can not found ${argv.e} in config file`);
       }
     }
+
+    if (argv.o) {
+      if (config[argv.e]) {
+        for (let i=0; i<config[argv.e].length; i++) {
+          console.log(argv.e, i, ':')
+          await fetchOrders(argv.e, config[argv.e][i]);
+        }
+      } else {
+        throw new Error(`can not found ${argv.e} in config file`);
+      }
+    }
+
     console.log();
     console.log('Done!');
   } catch (error) {
@@ -50,9 +62,7 @@ async function main() {
 
 const queryBalance = async (name, apikey) => {
   const Exchange = ccxt[name.toLowerCase()];
-
   const exchange = new Exchange(apikey);
-
   let ret = await exchange.fetchBalance();
   const free = ret.free;
   const used = ret.used;
@@ -77,6 +87,13 @@ const queryBalance = async (name, apikey) => {
   });
 
   return { free, used, total }
+}
+
+const fetchOrders = async (name, apikey) => {
+  const Exchange = ccxt[name.toLowerCase()];
+  const exchange = new Exchange(apikey);
+  let ret = await exchange.fetchOrders();
+  console.log(ret);
 }
 
 main();
