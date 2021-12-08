@@ -173,3 +173,11 @@ binance apikey 0 :
 ]
 
 ```
+
+## Create Order:
+
+```
+$ node ./ccxt-cli.js -e binance --trade WAN/USDT --side sell --type limit --amount 100 --price 1.01
+
+```
+
