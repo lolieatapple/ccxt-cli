@@ -10,21 +10,24 @@ $ cd ccxt-cli
 $ npm i
 $ node ./ccxt-cli.js
 
-A JavaScript cryptocurrency trading command line script with support for 130+ exchanges based on ccxt library. @wandevs
-Usage: node ./ccxt-cli.js -c ./config.json -e huobi -b
+A JavaScript cryptocurrency trading command line script with support for 130+ exchanges based on ccxt library.
+Usage: ../.nvm/versions/node/v12.18.3/bin/node ./ccxt-cli.js -c ./config.json -e huobi -b
 
 Options:
-  -c, --config    select config.json file               [default: "./config.json"]
-  -e, --exchange  select exchange                       [required]
+  -c, --config    select config.json file                                                                                            [default: "./config.json"]
+  -e, --exchange  -e huobi Select exchange                                                                                           [required]
   -b, --balance   check balance
-  -o, --order     -o [symbol] fetch orders of [symbol]
-  --create        create trade order
+  -o, --order     -o WAN/BTC Fetch orders of market
+  --trade         with market symbol WAN/USDT, default use first apikey to trade. must use same time with side, type, amount, price
+  --side          the direction of your order, buy or sell
+  --type          market or limit
+  --amount        how much of currency you want to trade
+  --price         how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
 
 Missing required arguments: e
-
 ```
 
-# CONFIG
+# Config
 
 Place a config.json file with format:
 ```
