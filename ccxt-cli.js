@@ -29,7 +29,7 @@ async function main() {
 
     const config = JSON.parse(fs.readFileSync(argv.c, 'utf-8'));
 
-    console.log(argv, config);
+    // console.log(argv, config);
 
     if (argv.b) {
       if (config[argv.e]) {
