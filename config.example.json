@@ -1,0 +1,33 @@
+{
+  "huobi": [
+    {
+      "apiKey": "f309*********24",
+      "secret": "920*********bf9e"
+    },
+    {
+      "apiKey": "f309*********a24",
+      "secret": "920f*********bf9e"
+    },
+    {
+      "apiKey": "f309*********a24",
+      "secret": "920f*********bf9e"
+    }
+  ],
+  "binance": [
+    {
+      "apiKey": "uAqr*********O6hgF",
+      "secret": "0wJB1hC*********9Ji4a"
+    },
+    {
+      "apiKey": "uAqr*********O6hgF",
+      "secret": "0wJB1hC*********9Ji4a"
+    }
+  ],
+  "kucoin": [
+    {
+      "apiKey": "61a*********1e5995f",
+      "secret": "bd33c*********cd8897d",
+      "password": "gm6*********AQ7Km"
+    }
+  ]
+}

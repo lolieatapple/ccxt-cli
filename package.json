@@ -1,0 +1,11 @@
+{
+  "name": "cctx-cli",
+  "version": "1.0.0",
+  "main": "ccxt-cli.js",
+  "license": "MIT",
+  "dependencies": {
+    "cctx": "^1.0.1",
+    "ccxt": "^1.63.20",
+    "optimist": "^0.6.1"
+  }
+}
