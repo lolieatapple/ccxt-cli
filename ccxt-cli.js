@@ -17,7 +17,7 @@ let argv = optimist
   .describe("c", "select config.json file")
   .describe("e", "select exchange")
   .describe("b", "check balance")
-  .describe("o", "display order")
+  .describe("o", "-o [symbol] fetch orders of [symbol]")
   .describe("create", "create trade order").argv;
 
 async function main() {
@@ -46,7 +46,7 @@ async function main() {
       if (config[argv.e]) {
         for (let i=0; i<config[argv.e].length; i++) {
           console.log(argv.e, i, ':')
-          await fetchOrders(argv.e, config[argv.e][i]);
+          await fetchOrders(argv.e, config[argv.e][i], argv.o);
         }
       } else {
         throw new Error(`can not found ${argv.e} in config file`);
