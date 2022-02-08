@@ -61,6 +61,7 @@ async function main() {
     }
 
     if (argv.cancel) {
+      console.log('ready to cancel order id:', argv.id);
       if (config[argv.e][0]) {
         console.log(argv.e, 'apikey', 0, ':')
         await cancelOrder(argv.e, config[argv.e][0], argv.id);

@@ -23,6 +23,8 @@ Options:
   --type          market or limit
   --amount        how much of currency you want to trade
   --price         how much quote currency you are willing to pay for a trade lot of base currency (for limit orders only)
+  --cancel        with orderId, default use first apikey to trade. must use same time with id, input order id                      
+  --id            order id  
 
 Missing required arguments: e
 ```
@@ -184,3 +186,9 @@ $ node ./ccxt-cli.js -e binance --trade WAN/USDT --side sell --type limit --amou
 
 ```
 
+## Cancel Order:
+
+```
+$ node ./ccxt-cli.js -e binance --cancel --id 1234567
+
+```
