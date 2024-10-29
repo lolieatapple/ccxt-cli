@@ -21,6 +21,7 @@ let argv = optimist
   .describe("trade", "with market symbol WAN/USDT, default use first apikey to trade. must use same time with side, type, amount, price")
   .describe("cancel", "with orderId, default use first apikey to trade. must use same time with id, input order id")
   .describe("cancelAll", "cancel all orders")
+  .describe("symbol", "market symbol")
   .describe("id", "order id")
   .describe("side", "the direction of your order, buy or sell")
   .describe("type", "market or limit")
@@ -75,7 +76,7 @@ async function main() {
       console.log('ready to cancel all orders');
       if (config[argv.e][0]) {
         console.log(argv.e, 'apikey', 0, ':')
-        await cancelAllOrders(argv.e, config[argv.e][0]);
+        await cancelAllOrders(argv.e, config[argv.e][0], argv.symbol);
       } else {
         throw new Error(`can not found ${argv.e} in config file`);
       }
@@ -147,10 +148,10 @@ const cancelOrder = async (name, apikey, id) => {
   console.log(ret);
 }
 
-const cancelAllOrders = async (name, apikey) => {
+const cancelAllOrders = async (name, apikey, symbol) => {
   const Exchange = ccxt[name.toLowerCase()];
   const exchange = new Exchange(apikey);
-  let ret = await exchange.cancelAllOrders();
+  let ret = await exchange.cancelAllOrders(symbol);
   console.log(ret);
 }
 
