@@ -7,10 +7,12 @@ cctx@^1.0.1:
   resolved "https://registry.yarnpkg.com/cctx/-/cctx-1.0.1.tgz#05676cdcf8a05c815ac01b34062abdd44c376159"
   integrity sha512-AcWAyflX8kGUaYMyvCLzRpcOe4MyMYioPzqoQ8AIrNFSQS2ddKLW46fIKc4wiTPai6b/Pebx2acBc1vPjGWGpA==
 
-ccxt@^1.63.20:
-  version "1.63.20"
-  resolved "https://registry.yarnpkg.com/ccxt/-/ccxt-1.63.20.tgz#7410273b58bbf0a4c44667b99705283c02ce20d8"
-  integrity sha512-xEjxX065mbnqxV+q/YhpRVuQOlmAFKZD2dk/L86qW+p5bVyLmsKeBF05mPrnFSgTTM/rLFI6J+4RyMAOBRrClw==
+ccxt@^4.4.25:
+  version "4.4.25"
+  resolved "https://registry.yarnpkg.com/ccxt/-/ccxt-4.4.25.tgz#b9ea3f7792583956b5d8368d2104e6b0713f6149"
+  integrity sha512-xSMm6FJZxmG0Y80fCWPujDY67bU5kgHcOlhC6wPJ0FktdSYr21A5Z7CFEG5q3eVjjhfVMDzA6TUO96E4WlsRZg==
+  dependencies:
+    ws "^8.8.1"
 
 minimist@~0.0.1:
   version "0.0.10"
@@ -29,3 +31,8 @@ wordwrap@~0.0.2:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
   integrity sha1-o9XabNXAvAAI03I0u68b7WMFkQc=
+
+ws@^8.8.1:
+  version "8.18.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.18.0.tgz#0d7505a6eafe2b0e712d232b42279f53bc289bbc"
+  integrity sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==

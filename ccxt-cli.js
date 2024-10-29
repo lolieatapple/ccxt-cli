@@ -20,6 +20,7 @@ let argv = optimist
   .describe("o", "-o WAN/BTC Fetch orders of market")
   .describe("trade", "with market symbol WAN/USDT, default use first apikey to trade. must use same time with side, type, amount, price")
   .describe("cancel", "with orderId, default use first apikey to trade. must use same time with id, input order id")
+  .describe("cancelAll", "cancel all orders")
   .describe("id", "order id")
   .describe("side", "the direction of your order, buy or sell")
   .describe("type", "market or limit")
@@ -65,6 +66,16 @@ async function main() {
       if (config[argv.e][0]) {
         console.log(argv.e, 'apikey', 0, ':')
         await cancelOrder(argv.e, config[argv.e][0], argv.id);
+      } else {
+        throw new Error(`can not found ${argv.e} in config file`);
+      }
+    }
+
+    if (argv.cancelAll) {
+      console.log('ready to cancel all orders');
+      if (config[argv.e][0]) {
+        console.log(argv.e, 'apikey', 0, ':')
+        await cancelAllOrders(argv.e, config[argv.e][0]);
       } else {
         throw new Error(`can not found ${argv.e} in config file`);
       }
@@ -133,6 +144,13 @@ const cancelOrder = async (name, apikey, id) => {
   const Exchange = ccxt[name.toLowerCase()];
   const exchange = new Exchange(apikey);
   let ret = await exchange.cancelOrder(id);
+  console.log(ret);
+}
+
+const cancelAllOrders = async (name, apikey) => {
+  const Exchange = ccxt[name.toLowerCase()];
+  const exchange = new Exchange(apikey);
+  let ret = await exchange.cancelAllOrders();
   console.log(ret);
 }
 

@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "cctx": "^1.0.1",
-    "ccxt": "^1.63.20",
+    "ccxt": "^4.4.25",
     "optimist": "^0.6.1"
   }
 }
