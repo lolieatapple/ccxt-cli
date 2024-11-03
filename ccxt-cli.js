@@ -43,7 +43,6 @@ async function main() {
     if (argv.b) {
       if (config[argv.e]) {
         for (let i=0; i<config[argv.e].length; i++) {
-          console.log(argv.e, 'apikey', i, ':')
           console.log(await queryBalance(argv.e, config[argv.e][i]));
         }
       } else {
@@ -54,7 +53,6 @@ async function main() {
     if (argv.o) {
       if (config[argv.e]) {
         for (let i=0; i<config[argv.e].length; i++) {
-          console.log(argv.e, 'apikey', i, ':')
           await fetchOrders(argv.e, config[argv.e][i], argv.o);
         }
       } else {
@@ -65,7 +63,6 @@ async function main() {
     if (argv.cancel) {
       console.log('ready to cancel order id:', argv.id);
       if (config[argv.e][0]) {
-        console.log(argv.e, 'apikey', 0, ':')
         await cancelOrder(argv.e, config[argv.e][0], argv.id);
       } else {
         throw new Error(`can not found ${argv.e} in config file`);
@@ -75,7 +72,6 @@ async function main() {
     if (argv.cancelAll) {
       console.log('ready to cancel all orders');
       if (config[argv.e][0]) {
-        console.log(argv.e, 'apikey', 0, ':')
         await cancelAllOrders(argv.e, config[argv.e][0], argv.symbol);
       } else {
         throw new Error(`can not found ${argv.e} in config file`);
@@ -84,15 +80,11 @@ async function main() {
 
     if (argv.trade) {
       if (config[argv.e][0]) {
-        console.log(argv.e, 'apikey', 0, ':')
         await createOrder(argv.e, config[argv.e][0], argv.trade, argv.type, argv.side, argv.amount, argv.price);
       } else {
         throw new Error(`can not found ${argv.e} in config file`);
       }
     }
-
-    console.log();
-    console.log('Done!');
   } catch (error) {
     console.log(error);
   }
