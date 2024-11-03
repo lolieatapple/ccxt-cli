@@ -130,7 +130,7 @@ const queryBalance = async (name, apikey) => {
 const fetchOrders = async (name, apikey, symbol) => {
   const Exchange = ccxt[name.toLowerCase()];
   const exchange = new Exchange(apikey);
-  let ret = await exchange.fetchOrders(symbol);
+  let ret = await exchange.fetchOpenOrders(symbol);
   console.log(ret);
 }
 
