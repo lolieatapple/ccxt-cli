@@ -90,6 +90,20 @@ async function main() {
     if (argv.time) {
       let time = await fetchTime(argv.e, config[argv.e][0]);
       console.log(time);
+      // config local system time to server time 
+      // Set system time to match server time
+      const { execSync } = require('child_process');
+      const date = new Date(time);
+      
+      if (process.platform === 'win32') {
+        // Windows
+        execSync(`date ${date.toLocaleDateString()}`);
+        execSync(`time ${date.toLocaleTimeString()}`);
+      } else {
+        // Linux/Unix/MacOS
+        execSync(`date -s "${date.toISOString()}"`);
+      }
+      console.log('System time synchronized with server', date.toISOString());
     }
   } catch (error) {
     console.log(error);
