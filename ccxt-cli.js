@@ -146,7 +146,6 @@ const fetchOrders = async (name, apikey, symbol) => {
   
   const formattedOrders = ret.sort((a, b) => b.price - a.price).map((v, i) => {
     return {
-      index: i,
       id: v.id,
       symbol: v.symbol,
       side: v.side,
