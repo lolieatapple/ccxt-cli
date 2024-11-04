@@ -18,6 +18,7 @@ let argv = optimist
   .describe("e", "-e huobi Select exchange")
   .describe("b", "check balance")
   .describe("o", "-o WAN/BTC Fetch orders of market")
+  .describe("time", "fetch time")
   .describe("trade", "with market symbol WAN/USDT, default use first apikey to trade. must use same time with side, type, amount, price")
   .describe("cancel", "with orderId, default use first apikey to trade. must use same time with id, input order id")
   .describe("cancelAll", "cancel all orders")
@@ -84,6 +85,11 @@ async function main() {
       } else {
         throw new Error(`can not found ${argv.e} in config file`);
       }
+    }
+
+    if (argv.time) {
+      let time = await fetchTime(argv.e, config[argv.e][0]);
+      console.log(time);
     }
   } catch (error) {
     console.log(error);
@@ -154,6 +160,13 @@ const cancelAllOrders = async (name, apikey, symbol) => {
   const exchange = new Exchange(apikey);
   let ret = await exchange.cancelAllOrders(symbol);
   console.log(ret);
+}
+
+const fetchTime = async (name, apikey) => {
+  const Exchange = ccxt[name.toLowerCase()];
+  const exchange = new Exchange(apikey);
+  let ret = await exchange.fetchTime();
+  return ret;
 }
 
 main();
