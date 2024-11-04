@@ -123,7 +123,16 @@ const fetchOrders = async (name, apikey, symbol) => {
   const Exchange = ccxt[name.toLowerCase()];
   const exchange = new Exchange(apikey);
   let ret = await exchange.fetchOpenOrders(symbol);
-  console.log(ret);
+  console.log(ret.sort((a, b)=>b.price-a.price).map((v, i)=>{
+    return {
+      index: i,
+      id: v.id,
+      symbol: v.symbol,
+      side: v.side,
+      price: v.price,
+      amount: v.amount,
+    }
+  }));
 }
 
 const createOrder = async (name, apikey, symbol, type, side, amount, price) => {
