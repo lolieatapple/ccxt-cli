@@ -144,21 +144,12 @@ const fetchOrders = async (name, apikey, symbol) => {
   const exchange = new Exchange(apikey);
   let ret = await exchange.fetchOpenOrders(symbol);
   
-  // 定义颜色代码
-  const RED = '\x1b[31m';
-  const GREEN = '\x1b[32m';
-  const RESET = '\x1b[0m';
-  
   const formattedOrders = ret.sort((a, b) => b.price - a.price).map((v, i) => {
-    const sideWithColor = v.side === 'sell' 
-      ? `${RED}${v.side}${RESET}`
-      : `${GREEN}${v.side}${RESET}`;
-    
     return {
       index: i,
       id: v.id,
       symbol: v.symbol,
-      side: sideWithColor,
+      side: v.side,
       price: v.price,
       amount: v.amount,
     }
