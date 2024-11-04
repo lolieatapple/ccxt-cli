@@ -151,7 +151,18 @@ const fetchOrders = async (name, apikey, symbol) => {
       side: v.side,
       price: v.price,
       amount: v.amount,
+      total: v.amount * v.price
     }
+  });
+
+  const totalSum = formattedOrders.reduce((sum, order) => sum + order.total, 0);
+  formattedOrders.push({
+    id: 'TOTAL',
+    symbol: '',
+    side: '',
+    price: '',
+    amount: '',
+    total: totalSum
   });
 
   console.table(formattedOrders);
