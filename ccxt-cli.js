@@ -156,12 +156,24 @@ const fetchOrders = async (name, apikey, symbol) => {
   });
 
   const totalSum = formattedOrders.reduce((sum, order) => sum + order.total, 0);
+  
+  // Add an empty row as a visual separator
   formattedOrders.push({
-    id: 'TOTAL',
+    id: '─'.repeat(20),
+    symbol: '─'.repeat(10),
+    side: '─'.repeat(6),
+    price: '─'.repeat(10),
+    amount: '─'.repeat(10),
+    total: '─'.repeat(10)
+  });
+  
+  // Add the total row
+  formattedOrders.push({
+    id: '',
     symbol: '',
     side: '',
     price: '',
-    amount: '',
+    amount: 'SUM:',
     total: totalSum
   });
 
